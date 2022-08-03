@@ -1,5 +1,5 @@
-{{ if .RSSLink }}
-    <li><a href="{{ .RSSLink }}" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a></li>
-{{ else }}
-    <li><a href="{{ .Site.RSSLink }}" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a></li>
+{{ $foo := .Site.Title }}
+{{ with .OutputFormats.Get "RSS" }}
+<link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $foo }}" />
+<link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $foo }}" />
 {{ end }}
